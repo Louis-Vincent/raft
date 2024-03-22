@@ -1,0 +1,42 @@
+syntax = "proto3";
+package database.commands;
+
+
+
+service Database {
+    rpc SendCommand(KVCommand) returns (CommandReply);
+    rpc ServerStreamingData(GetStreamRequest) returns (stream Data);
+}
+
+
+message Data {
+    string val = 1;
+}
+message GetStreamRequest {}
+
+
+message CommandReply {
+    string status = 1;    
+}
+
+
+message PutCommand {
+    string key = 1;
+    string value = 2;
+}
+
+message DeleteCommand {
+    string key = 1;
+}
+
+message GetCommand {
+    string key = 1;
+}
+
+message KVCommand {
+    oneof command {
+        PutCommand put = 1;
+        DeleteCommand delete = 2;
+        GetCommand get = 3;
+    }
+}

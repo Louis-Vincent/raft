@@ -1,0 +1,35 @@
+[package]
+name = "raft"
+version = "0.1.0"
+edition = "2021"
+default-run = "main"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "rock"
+path = "src/rocksdb.rs"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
+
+
+
+
+[dependencies]
+bytes = "1.5.0"
+futures = "0.3.30"
+num-derive = "0.4.2"
+num-traits = "0.2.18"
+prost = "0.12.3"
+rand = "0.8.5"
+rust-rocksdb = "0.22.7"
+tokio = {version = "1.36.0", features = ["full"]}
+tonic = "0.11.0"
+
+
+[build-dependencies]
+#prost-build = "0.12.3"
+tonic-build = "0.11.0"
